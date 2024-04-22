@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form class="form" action="" method="get">
+        <input type="text" name="nome" placeholder="Nome">
+        <input type="text" name="sobrenome" placeholder="sobrenome">
+        <input type="text" name="Peso" placeholder="Peso">
+        <input type="text" name="Altura" placeholder="Altura">
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        const form = document.querySelector('.form');
+        form.addEventListener('submit', function(event){
+            if(!event.target.nome.value || !event.target.sobrenome.value || !event.target.Peso.value || !event.target.Altura.value){ //Para impedir que seja enviado o formulario zerado
+                alert('Preencha todos os campos');
+                return;
+            }
+            if(isNaN(event.target.Peso.value) || isNaN(event.target.Altura.value)){ //Para impedir que seja enviado o formulario com letras
+                alert('Peso e Altura devem ser números');
+                return;
+            }
+            event.pessoa_recebe();
+            const nome = event.target.nome.value;
+            const sobrenome = event.target.sobrenome.value;
+            const peso = event.target.Peso.value;
+            const altura = event.target.Altura.value;
+
+            const pessoa = {
+                nome: nome,
+                sobrenome: sobrenome,
+                peso: peso,
+                altura: altura
+            }
+
+            console.log(pessoa);
+        });
+        
+    </script>
+</body>
+</html>
